@@ -11,20 +11,19 @@ import "../styles/globals.css";
 import type { AppType } from "next/dist/shared/lib/utils";
 
 const client = createClient({
-    url: "http://localhost:1337/graphql",
+    url: process.env.NEXT_PUBLIC_STRAPI_URL,
 });
 
 const productAtom = atomWithQuery(
     () => ({
         query: QUERY,
-        variables: {},
+        variables: { headers: { Authorization: "Bearer " + process.env.NEXT_PUBLIC_STRAPI_TOKEN } },
     }),
     () => client,
 );
 
 const MyApp: AppType = ({ Component, pageProps }) => {
     const [result] = useAtom<any>(productAtom);
-    // console.log(result.data.products.data);
     return (
         <Provider initialValues={[[itemsAtom, result.data.products.data]] as const}>
             <Component {...pageProps} />
