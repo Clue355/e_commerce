@@ -1,13 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 import { useAtom } from "jotai";
-import { itemsAtom } from "../atomStore";
+import { itemsAtom, queryAtom } from "../atomStore";
 
 import Product from "../components/product";
 
 const Home: NextPage = () => {
     const [items] = useAtom(itemsAtom);
+    const [query, setQuery] = useAtom(queryAtom);
+
+    function handleClick(slug: string) {
+        setQuery(slug);
+    }
+
     return (
         <>
             <Head>
@@ -19,14 +26,17 @@ const Home: NextPage = () => {
             <main className="">
                 <div className="flex flex-wrap w-3/5 mb-0 mt-6 mx-auto">
                     {items.map((item: any) => (
-                        <Product
-                            key={item.attributes.slug}
-                            id={item.attributes.slug}
-                            title={item.attributes.title}
-                            desc={item.attributes.description}
-                            price={item.attributes.price}
-                            image={item.attributes.image.data.attributes.formats.medium.url}
-                        />
+                        <Link key={item.attributes.slug} href={`/product/${item.attributes.slug}`}>
+                            <button onClick={() => handleClick(item.attributes.slug)}>
+                                <Product
+                                    id={item.attributes.slug}
+                                    title={item.attributes.title}
+                                    desc={item.attributes.description}
+                                    price={item.attributes.price}
+                                    image={item.attributes.image.data.attributes.formats.medium.url}
+                                />
+                            </button>
+                        </Link>
                     ))}
                 </div>
             </main>

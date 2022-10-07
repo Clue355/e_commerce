@@ -2,4 +2,6 @@ import { atom } from "jotai";
 
 const itemsAtom = atom([]);
 
-export { itemsAtom };
+const queryAtom = atom("");
+
+export { itemsAtom, queryAtom };

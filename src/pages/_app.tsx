@@ -1,4 +1,4 @@
-import { createClient, gql } from "@urql/core";
+import { createClient } from "@urql/core";
 import { atomWithQuery } from "jotai/urql";
 
 import { Provider, useAtom } from "jotai";
