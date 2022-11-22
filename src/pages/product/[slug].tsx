@@ -10,7 +10,7 @@ import { queryAtom } from "../../atomStore";
 import { GET_PRODUCT_QUERY } from "../../util/slugquery";
 
 const client = createClient({
-    url: process.env.NEXT_PUBLIC_STRAPI_URL,
+    url: "https://ecommercebackend-production.up.railway.app/graphql",
 });
 
 const slugAtom = atomWithQuery(
