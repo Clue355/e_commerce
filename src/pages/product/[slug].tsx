@@ -23,10 +23,9 @@ const slugAtom = atomWithQuery(
 export default function ProductPage() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [result] = useAtom<any>(slugAtom);
-    const title = result.data.products.data[0].attributes.title;
     return (
         <div className="h-screen flex justify-center items-center">
-            <h2>{title ? title : null}</h2>
+            <h2>{result ? result.data.products.data[0].attributes.title : null}</h2>
         </div>
     );
 }
