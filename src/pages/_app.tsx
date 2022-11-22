@@ -11,7 +11,7 @@ import "../styles/globals.css";
 import type { AppType } from "next/dist/shared/lib/utils";
 
 const client = createClient({
-    url: process.env.NEXT_PUBLIC_STRAPI_URL,
+    url: "https://ecommercebackend-production.up.railway.app/graphql",
 });
 
 const productAtom = atomWithQuery(
