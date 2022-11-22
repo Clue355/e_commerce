@@ -9,7 +9,7 @@ import Product from "../components/product";
 
 const Home: NextPage = () => {
     const [items] = useAtom(itemsAtom);
-    const [query, setQuery] = useAtom(queryAtom);
+    const [, setQuery] = useAtom(queryAtom);
 
     function handleClick(slug: string) {
         setQuery(slug);
