@@ -23,6 +23,7 @@ const productAtom = atomWithQuery(
 );
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [result] = useAtom<any>(productAtom);
     return (
         <Provider initialValues={[[itemsAtom, result.data.products.data]] as const}>

@@ -25,19 +25,22 @@ const Home: NextPage = () => {
 
             <main className="">
                 <div className="flex flex-wrap w-3/5 mb-0 mt-6 mx-auto">
-                    {items.map((item: any) => (
-                        <Link key={item.attributes.slug} href={`/product/${item.attributes.slug}`}>
-                            <button onClick={() => handleClick(item.attributes.slug)}>
-                                <Product
-                                    id={item.attributes.slug}
-                                    title={item.attributes.title}
-                                    desc={item.attributes.description}
-                                    price={item.attributes.price}
-                                    image={item.attributes.image.data.attributes.formats.medium.url}
-                                />
-                            </button>
-                        </Link>
-                    ))}
+                    {
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        items.map((item: any) => (
+                            <Link key={item.attributes.slug} href={`/product/${item.attributes.slug}`}>
+                                <button onClick={() => handleClick(item.attributes.slug)}>
+                                    <Product
+                                        id={item.attributes.slug}
+                                        title={item.attributes.title}
+                                        desc={item.attributes.description}
+                                        price={item.attributes.price}
+                                        image={item.attributes.image.data.attributes.formats.medium.url}
+                                    />
+                                </button>
+                            </Link>
+                        ))
+                    }
                 </div>
             </main>
         </>

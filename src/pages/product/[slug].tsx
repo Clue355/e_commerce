@@ -21,6 +21,7 @@ const slugAtom = atomWithQuery(
 );
 
 export default function ProductPage() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [result] = useAtom<any>(slugAtom);
 
     return (
