@@ -1,9 +1,6 @@
-import { useRouter } from "next/router";
-import { withRouter } from "next/router";
-
 import { createClient } from "@urql/core";
 import { atomWithQuery } from "jotai/urql";
-import { useHydrateAtoms } from "jotai/utils";
+
 import { useAtom } from "jotai";
 import { queryAtom } from "../../atomStore";
 
@@ -24,7 +21,7 @@ const slugAtom = atomWithQuery(
 );
 
 export default function ProductPage() {
-    const [result] = useAtom(slugAtom);
+    const [result] = useAtom<any>(slugAtom);
 
     return (
         <div className="h-screen flex justify-center items-center">
@@ -32,13 +29,3 @@ export default function ProductPage() {
         </div>
     );
 }
-
-// export const getServerSideProps = async (context: any) => {
-//     let { slug } = context.query;
-
-//     if (!slug) {
-//         slug = null;
-//     }
-
-//     return { props: { slug: slug } };
-// };
