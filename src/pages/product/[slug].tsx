@@ -25,7 +25,7 @@ export default function ProductPage() {
     const [result] = useAtom<any>(slugAtom);
     return (
         <div className="h-screen flex justify-center items-center">
-            <h2>{result ? result.data.products.data[0].attributes.title : null}</h2>
+            <h2>{result?.data?.products?.data[0]?.attributes?.title}</h2>
         </div>
     );
 }
